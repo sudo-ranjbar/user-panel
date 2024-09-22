@@ -14,6 +14,6 @@ class UserController extends Controller
 
     public function index()
     {
-        echo 'Hi from User';
+        $this->view('panel/profile');
     }
 }

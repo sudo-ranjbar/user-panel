@@ -3,9 +3,9 @@
 class HomeController extends Controller
 {
 
-    public function index($params)
+    public function index()
     {
 
-        $this->view('home/index');
+        $this->view('panel/panel');
     }
 }
