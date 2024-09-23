@@ -6,7 +6,7 @@ class AutoLoad
 
     private static $_instance = null;
 
-    public function __construct()
+    private function __construct()
     {
 
         spl_autoload_register([$this, 'autoloader']);
@@ -27,7 +27,7 @@ class AutoLoad
         }
     }
 
-    public function autoloader($class){
+    private function autoloader($class){
 
         require_once ROOT_PATH . '/App/Core/' . $class . '.php';
 
