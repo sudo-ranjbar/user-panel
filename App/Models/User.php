@@ -1,12 +1,15 @@
 <?php
+namespace App\Models;
 
+use App\Models\Contracts\PDO_Connection;
 
-class User extends PDO_Connection
+class User
 {
-    protected $table = 'users';
+    
+    private $db;
 
-//     public function __construct()
-//     {
-//         parent::__construct();
-//     }
+    public function __construct()
+    {
+        $this->db = PDO_Connection::getInstance();
+    }
 }
