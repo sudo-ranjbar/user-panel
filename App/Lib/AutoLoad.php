@@ -28,7 +28,7 @@ class AutoLoad
     {
 
         $ds = DIRECTORY_SEPARATOR;
-        $dir = __DIR__;
+        $dir = ROOT_PATH;
 
         // replace namespace separator with directory separator (prolly not required)
         $className = str_replace('\\', $ds, $className);

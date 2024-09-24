@@ -4,14 +4,14 @@ namespace App\Models\Contracts;
 interface ConnectionMethod
 {
     # Create
-    public function create();
+    public function create(String $query);
 
     # Read
-    public function get();
+    public function select(String $query);
 
     # Update
-    public function update();
+    public function update(String $query);
 
     # Delete
-    public function delete();
+    public function delete(String $query);
 }

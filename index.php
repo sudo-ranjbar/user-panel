@@ -2,7 +2,6 @@
 
 use App\Core\Router;
 
-require_once 'bootstrap.php';
-require_once ROOT_PATH . '/App/Core/Router.php';
+include 'bootstrap.php';
 
 $router = new Router();

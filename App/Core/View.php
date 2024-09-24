@@ -2,20 +2,11 @@
 
 namespace App\Core;
 
-abstract class Controller
+class View
 {
 
-
-    protected function model($model)
+    public static function view($view, $data = [])
     {
-
-        require_once ROOT_PATH . '/App/Models/' . $model . '.php';
-        return new $model;
-    }
-
-    protected function view($view, $data=[])
-    {
-
 
         if (file_exists(ROOT_PATH . '/views/' . $view . '.php')) {
             // Load view file

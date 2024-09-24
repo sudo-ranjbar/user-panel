@@ -5,7 +5,7 @@ class PDO_Connection extends BaseModel
 {
 
     private static $instance = null;
-    private $pdo;
+    private $stmt;
 
     private function __construct()
     {
@@ -22,7 +22,7 @@ class PDO_Connection extends BaseModel
             \PDO::ATTR_EMULATE_PREPARES => false,
         ];
         try {
-            $this->pdo = new \PDO($dsn, $user, $pass, $options);
+            $this->connection = new \PDO($dsn, $user, $pass, $options);
         } catch (\PDOException $e) {
             throw new \Exception($e->getMessage());
         }
@@ -33,31 +33,63 @@ class PDO_Connection extends BaseModel
         if (self::$instance === null) {
             self::$instance = new PDO_Connection();
         }
-        return self::$instance->pdo;
+        return self::$instance->connection;
     }
 
     # Create
-    public function create()
+    public function create(String $query)
     {
-
+        $this->stmt = $this->connection->prepare($query);
     }
 
     # Read
-    public function get()
+    public function select(String $query)
     {
-
+        $this->stmt = $this->connection->prepare($query);
     }
 
     # Update
-    public function update()
+    public function update(String $query)
     {
-
+        $this->stmt = $this->connection->prepare($query);
     }
 
     # Delete
-    public function delete()
+    public function delete(String $query)
     {
-
+        $this->stmt = $this->connection->prepare($query);
     }
 
+    // Bind Value
+    public function bind($param, $value)
+    {
+        $this->stmt->bindParam($param, $value);
+    }
+
+    // Execute the prepared statment
+    public function execute()
+    {
+        return $this->stmt->execute();
+    }
+
+    // Get resualt set as array of object
+    public function fetchAll()
+    {
+        $this->execute();
+        return $this->stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    // Get single record as object
+    public function fetch()
+    {
+        $this->execute();
+        return $this->stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    // Get row count
+    public function rowCount()
+    {
+        $this->execute();
+        return $this->stmt->rowCount();
+    }
 }

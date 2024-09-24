@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models\Contracts;
 
 abstract class BaseModel implements ConnectionMethod

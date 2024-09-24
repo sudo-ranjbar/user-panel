@@ -1,12 +1,14 @@
 <?php
 
-use App\Core\Controller;
-class HomeController extends Controller
+
+use App\Core\View;
+
+class HomeController
 {
 
     public function index()
     {
 
-        $this->view('panel/panel');
+        View::view('panel/panel');
     }
 }
