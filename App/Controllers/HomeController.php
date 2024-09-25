@@ -9,6 +9,6 @@ class HomeController
     public function index()
     {
 
-        View::view('panel/panel');
+        View::view('panel/dashboard');
     }
 }

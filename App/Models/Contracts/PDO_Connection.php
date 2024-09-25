@@ -69,7 +69,7 @@ class PDO_Connection extends BaseModel
     // Execute the prepared statment
     public function execute()
     {
-        return $this->stmt->execute();
+        $this->stmt->execute();
     }
 
     // Get resualt set as array of object
